@@ -1,0 +1,29 @@
+ALGORITHM ins_sort
+VAR
+    t : ARRAY_OF INTEGER[10];
+    i,n,temp : INTEGER;
+    test : BOOLEAN;
+BEGIN
+    Write("insert the array length : ");
+    Read(n);
+    FOR i FROM 0 TO n-1 DO
+        Read(t[i]);
+    END_FOR
+
+    REPEAT
+        test:=false;
+        FOR i FROM 1 TO n-1 DO
+            IF (t[i]<t[i-1]) THEN
+                temp:=t[i-1];
+                t[i-1]:=t[i];
+                t[i]:=temp;
+                test:=true;
+            END_IF
+        END_FOR
+    UNTIL (test=false);
+
+    Write("The sorted array : ");
+    FOR i FROM 0 TO n-1 DO
+        Write(t[i]);
+    END_FOR
+END
