@@ -11,14 +11,13 @@ BEGIN
 
     FOR i FROM 1 TO n-1 DO
         j:= i-1;
-        WHILE (j>=0 && t[i]<t[j] ) DO
-            IF (t[i]<t[j] && t[i]>t[j-1]) THEN
-            temp:=t[j];
-            t[j]:=t[i];
-            t[i]:=temp;
-            END_IF
-            i--;
+        temp:=t[i];
+        WHILE (j>=0 && temp<t[j] ) DO
+            t[j+1]:=t[j];
+            j--;
         END_WHILE
+        j++
+        t[j]:=temp;
     END_FOR
 
     Write("The sorted array : ");
