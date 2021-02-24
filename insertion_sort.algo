@@ -1,8 +1,7 @@
 ALGORITHM ins_sort
 VAR
     t : ARRAY_OF INTEGER[10];
-    i,n,temp : INTEGER;
-    test : BOOLEAN;
+    i,j,n,temp : INTEGER;
 BEGIN
     Write("insert the array length : ");
     Read(n);
@@ -10,17 +9,17 @@ BEGIN
         Read(t[i]);
     END_FOR
 
-    REPEAT
-        test:=false;
-        FOR i FROM 1 TO n-1 DO
-            IF (t[i]<t[i-1]) THEN
-                temp:=t[i-1];
-                t[i-1]:=t[i];
-                t[i]:=temp;
-                test:=true;
+    FOR i FROM 1 TO n-1 DO
+        j:= i-1;
+        WHILE (j>=0 && t[i]<t[j] ) DO
+            IF (t[i]<t[j] && t[i]>t[j-1]) THEN
+            temp:=t[j];
+            t[j]:=t[i];
+            t[i]:=temp;
             END_IF
-        END_FOR
-    UNTIL (test=false);
+            i--;
+        END_WHILE
+    END_FOR
 
     Write("The sorted array : ");
     FOR i FROM 0 TO n-1 DO
